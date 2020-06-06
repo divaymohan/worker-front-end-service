@@ -4,9 +4,10 @@ class RightBody extends Component {
   state = {};
   render() {
     return (
-      <React.Fragmen>
-        <h2>I am from Right Side</h2>{" "}
-      </React.Fragmen>
+      <p>
+        I am from Right Side smfnbhsd sjcbdsb chbdsv jbbcds sjbcds bbcds bcdsc
+        sjcsd
+      </p>
     );
   }
 }
