@@ -33,7 +33,7 @@ class NavBar extends Component {
         </button>
         <a onClick={this.handleClickOnLogo} className="navbar-brand">
           <h2>
-            <span className="badge badge-light badge-pill">
+            <span className="badge badge-light badge-pill text-primary">
               Worker Hiring System
             </span>
           </h2>
