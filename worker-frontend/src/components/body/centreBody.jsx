@@ -33,11 +33,9 @@ class CentreBody extends Component {
   render() {
     return (
       <React.Fragment>
-        <Worker />
-        <Worker />
-        <Worker />
-        <Worker />
-        <Worker />
+        {this.state.workers.map((w) => (
+          <Worker worker={w} />
+        ))}
       </React.Fragment>
     );
   }
