@@ -17,8 +17,8 @@ class Worker extends Component {
         <div className="card-body">
           <h5 className="card-title text-secondary">{skills.join(",")}</h5>
           <p className="card-text">{Details}</p>
-          <a onclick= {this.handleBookEvent} className="btn btn-primary btn-sm m-2">Book</a>
-          <a className="btn btn-secondary btn-sm m-2">See Page</a>
+          <a onClick= {this.handleBookEvent} className="btn btn-primary btn-sm m-2">Book</a>
+          <a onClick={this.handleSeePageEvent} className="btn btn-secondary btn-sm m-2">See Page</a>
         </div>
       </div>
     );

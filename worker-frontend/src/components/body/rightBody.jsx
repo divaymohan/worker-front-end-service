@@ -5,8 +5,7 @@ class RightBody extends Component {
   render() {
     return (
       <p>
-        I am from Right Side smfnbhsd sjcbdsb chbdsv jbbcds sjbcds bbcds bcdsc
-        sjcsd
+        
       </p>
     );
   }

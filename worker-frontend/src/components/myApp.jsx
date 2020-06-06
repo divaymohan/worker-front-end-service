@@ -10,8 +10,8 @@ class MyApp extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <main className="container bg-dark">
-          <div className="row mb-3">
+        <main className="container bg-white">
+          <div className="row">
             <div className="col-2 bg-light m-2">
               <LeftBody />
             </div>
