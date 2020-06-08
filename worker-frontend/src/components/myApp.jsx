@@ -7,6 +7,7 @@ import { getWorks } from "../services/fakeWorkServices";
 import Pagination from "./common/pagination";
 import { getWorkers } from "../services/fakeWorkerService";
 import { paginate } from "../utils/paginate";
+import FooterBar from "./footer/footer";
 
 class MyApp extends Component {
   state = {
@@ -59,6 +60,7 @@ class MyApp extends Component {
               <RightBody />
             </div>
           </div>
+          <FooterBar />
         </main>
       </React.Fragment>
     );

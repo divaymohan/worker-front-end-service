@@ -11,6 +11,7 @@ class Worker extends Component {
   };
   render() {
     const {
+      firstName,
       userName,
       email,
       phoneNumber,
@@ -20,38 +21,38 @@ class Worker extends Component {
     } = this.props.worker;
     const { country, houseNumber, city, pin, street, area, landmark } = address;
     return (
-      <div className="card m-4">
-        <div className="card-header text-info">
-          {userName}
+      <div className="card m-2">
+        <div className="card-header text-dark">
+          <h4>{firstName}</h4>
           <span>
-            <p className="card-title text-secondary">
-              {skills.map((s) => {
-                return (
-                  <span className="badge badge-pill badge-success m-1">
-                    {s.work}
-                  </span>
-                );
-              })}
-            </p>
+            {skills.map((s) => {
+              return (
+                <span className="badge badge-pill badge-success m-1">
+                  {s.work}
+                </span>
+              );
+            })}
           </span>
         </div>
         <div className="card-body">
-          <p className="card-text">
-            <h5>
-              <spam>email Id:: </spam>
-            </h5>
+          <p className="card-text m-1">
+            Email Id : {email}
+            <br />
+            Contact : {phoneNumber}
+            <br />
+            Price : {pricePerDay}
           </p>
           <a
             onClick={this.handleBookEvent}
-            className="btn btn-primary btn-sm m-2"
+            className="btn btn-primary btn-sm m-1"
           >
             Book
           </a>
           <a
             onClick={this.handleSeePageEvent}
-            className="btn btn-secondary btn-sm m-2"
+            className="btn btn-sm btn-secondary"
           >
-            See Page
+            Details
           </a>
         </div>
       </div>
