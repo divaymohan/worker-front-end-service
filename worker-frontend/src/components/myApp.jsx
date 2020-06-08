@@ -7,20 +7,26 @@ import { getWorks } from "../services/fakeWorkServices";
 
 class MyApp extends Component {
   state = {
-    works: getWorks(),
+    works: [],
   };
+  componentDidMount() {
+    const works = [{ _id: " ", work: "All Jobs" }, ...getWorks()];
+    this.setState({ works });
+  }
   handleWorkClick = (work) => {
     console.log("you are intrested in: ", work);
   };
   render() {
-    const { works } = this.state;
     return (
       <React.Fragment>
         <NavBar />
         <main className="container bg-white">
           <div className="row">
             <div className="col-2 bg-light m-2">
-              <Filters works={works} onClick={this.handleWorkClick} />
+              <Filters
+                AllWorks={this.state.works}
+                onHandleClick={this.handleWorkClick}
+              />
             </div>
             <div className="col-8 bg-light m-2">
               <CentreBody />
