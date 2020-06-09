@@ -16,6 +16,8 @@ class MyApp extends Component {
     currentSelectedWork: null,
     pageSize: 2,
     currentPage: 1,
+    sortValue: "Low To High",
+    sortpath: "firstName",
   };
   componentDidMount() {
     const currentSelectedWork = { _id: null, work: "All Jobs" };
@@ -32,6 +34,9 @@ class MyApp extends Component {
   };
   handleClickPage = (page) => {
     this.setState({ currentPage: page });
+  };
+  handleSort = (path, value) => {
+    console.log(path, value);
   };
   render() {
     const {
@@ -74,7 +79,11 @@ class MyApp extends Component {
             </div>
 
             <div className="col bg-light m-2">
-              <RightBody />
+              <RightBody
+                items={["Low To High", "High To Low"]}
+                paths={["Rating", "Price"]}
+                onSelectSort={this.handleSort}
+              />
             </div>
           </div>
           <FooterBar />
