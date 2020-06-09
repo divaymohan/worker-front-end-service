@@ -13,12 +13,12 @@ class MyApp extends Component {
   state = {
     works: [],
     workers: [],
-    currentSelectedWork: " ",
+    currentSelectedWork: null,
     pageSize: 2,
     currentPage: 1,
   };
   componentDidMount() {
-    const currentSelectedWork = { _id: " ", work: "All Jobs" };
+    const currentSelectedWork = { _id: null, work: "All Jobs" };
     const works = [currentSelectedWork, ...getWorks()];
     const workers = getWorkers();
 
@@ -26,32 +26,49 @@ class MyApp extends Component {
   }
   handleWorkClick = (work) => {
     const currentSelectedWork = work;
-    this.setState({ currentSelectedWork });
-    console.log("you are intrested in: ", work);
+    const currentPage = 1;
+    //console.log(currentSelectedWork);
+    this.setState({ currentSelectedWork, currentPage });
   };
   handleClickPage = (page) => {
     this.setState({ currentPage: page });
   };
   render() {
-    const { works, pageSize, currentPage, workers } = this.state;
-    const worker = paginate(workers, currentPage, pageSize);
+    const {
+      works,
+      pageSize,
+      currentPage,
+      workers,
+      currentSelectedWork,
+    } = this.state;
+
+    const filtered =
+      currentSelectedWork && currentSelectedWork._id
+        ? workers.filter((worker) => {
+            for (let i = 0; i < worker.skills.length; i++) {
+              if (worker.skills[i].work === currentSelectedWork.work) {
+                return true;
+              }
+            }
+            return false;
+          })
+        : workers;
+    console.log(filtered);
+    const worker = paginate(filtered, currentPage, pageSize);
     return (
       <React.Fragment>
         <NavBar />
         <main className="container bg-white">
           <div className="row">
             <div className="col-2 bg-light m-2">
-              <Filters
-                Works={this.state}
-                onHandleClick={this.handleWorkClick}
-              />
+              <Filters Works={this.state} onWorkClick={this.handleWorkClick} />
             </div>
             <div className="col-8 bg-light m-2">
               <CentreBody worker={worker} />
               <Pagination
                 pageSize={pageSize}
                 currentPage={currentPage}
-                itemsCount={workers.length}
+                itemsCount={filtered.length}
                 onPageChange={this.handleClickPage}
               />
             </div>

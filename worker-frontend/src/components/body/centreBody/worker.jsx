@@ -27,7 +27,10 @@ class Worker extends Component {
           <span>
             {skills.map((s) => {
               return (
-                <span className="badge badge-pill badge-success m-1">
+                <span
+                  key={s.work}
+                  className="badge badge-pill badge-success m-1"
+                >
                   {s.work}
                 </span>
               );

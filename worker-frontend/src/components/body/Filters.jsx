@@ -1,13 +1,14 @@
 import React from "react";
 
 const Filters = (props) => {
-  const { onHandleClick, Works } = props;
+  const { onWorkClick, Works } = props;
   const { works, currentSelectedWork } = Works;
   return (
     <ul className="list-group m-2">
       {works.map((w) => (
         <li
-          onClick={() => onHandleClick(w)}
+          key={w._id}
+          onClick={() => onWorkClick(w)}
           className={
             w === currentSelectedWork
               ? "list-group-item active"

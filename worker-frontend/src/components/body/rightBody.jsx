@@ -19,7 +19,6 @@ class RightBody extends Component {
         </div>
         <div className="m-1">
           <h5>
-            {" "}
             <span className="badge badge-pill badge-dark m-2">
               Sort By Rating
             </span>
