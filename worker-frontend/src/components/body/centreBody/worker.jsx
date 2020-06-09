@@ -21,12 +21,17 @@ class Worker extends Component {
       address,
       rating,
     } = this.props.worker;
-    const { country, houseNumber, city, pin, street, area, landmark } = address;
+    //const { country, houseNumber, city, pin, street, area, landmark } = address;
     return (
       <div className="card m-2">
         <div className="card-header text-dark">
-          <h4>{firstName}</h4>
-          <StarRatingComponent name="rate1" starCount={5} value={rating} />
+          <h4>
+            {firstName}
+            <div className="float-right">
+              <StarRatingComponent name="rate1" starCount={5} value={rating} />
+            </div>
+          </h4>
+
           <span>
             {skills.map((s) => {
               return (

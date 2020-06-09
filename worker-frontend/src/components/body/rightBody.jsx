@@ -7,14 +7,21 @@ class RightBody extends Component {
       <div>
         <div className="m-1">
           <h5>
-            {" "}
             <span className="badge badge-pill badge-dark m-2">
               Sort By Price
             </span>
           </h5>
           <div className="list-group">
-            <div className="list-group-item">Hight To Low</div>
-            <div className="list-group-item">Low To High</div>
+            <div className="list-group-item ">
+              <h6>
+                <small>Hight To Low</small>
+              </h6>
+            </div>
+            <div className="list-group-item">
+              <h6>
+                <small> Low To High</small>
+              </h6>
+            </div>
           </div>
         </div>
         <div className="m-1">
@@ -24,8 +31,16 @@ class RightBody extends Component {
             </span>
           </h5>
           <div className="list-group">
-            <div className="list-group-item">Hight To Low</div>
-            <div className="list-group-item">Low To High</div>
+            <div className="list-group-item">
+              <h6>
+                <small>Hight To Low</small>
+              </h6>
+            </div>
+            <div className="list-group-item">
+              <h6>
+                <small> Low To High</small>
+              </h6>
+            </div>
           </div>
         </div>
       </div>

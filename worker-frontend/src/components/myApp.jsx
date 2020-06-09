@@ -60,7 +60,7 @@ class MyApp extends Component {
         <NavBar />
         <main className="container bg-white">
           <div className="row">
-            <div className="col-2 bg-light m-2">
+            <div className="col bg-light m-2">
               <Filters Works={this.state} onWorkClick={this.handleWorkClick} />
             </div>
             <div className="col-8 bg-light m-2">
