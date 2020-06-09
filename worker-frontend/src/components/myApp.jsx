@@ -8,6 +8,7 @@ import Pagination from "./common/pagination";
 import { getWorkers } from "../services/fakeWorkerService";
 import { paginate } from "../utils/paginate";
 import FooterBar from "./footer/footer";
+import _ from "lodash";
 
 class MyApp extends Component {
   state = {
@@ -37,6 +38,9 @@ class MyApp extends Component {
   };
   handleSort = (path, value) => {
     console.log(path, value);
+    const sortpath = path;
+    const sortValue = value;
+    this.setState({ sortValue, sortpath });
   };
   render() {
     const {
@@ -45,6 +49,8 @@ class MyApp extends Component {
       currentPage,
       workers,
       currentSelectedWork,
+      sortValue,
+      sortpath,
     } = this.state;
 
     const filtered =
@@ -59,7 +65,14 @@ class MyApp extends Component {
           })
         : workers;
     console.log(filtered);
-    const worker = paginate(filtered, currentPage, pageSize);
+    let sorted = filtered;
+    if (sortValue === "Low To High") {
+      sorted = _.orderBy(filtered, sortpath, "asc");
+    } else {
+      sorted = _.orderBy(filtered, sortpath, "desc");
+    }
+
+    const worker = paginate(sorted, currentPage, pageSize);
     return (
       <React.Fragment>
         <NavBar />
@@ -73,7 +86,7 @@ class MyApp extends Component {
               <Pagination
                 pageSize={pageSize}
                 currentPage={currentPage}
-                itemsCount={filtered.length}
+                itemsCount={sorted.length}
                 onPageChange={this.handleClickPage}
               />
             </div>
@@ -81,8 +94,10 @@ class MyApp extends Component {
             <div className="col bg-light m-2">
               <RightBody
                 items={["Low To High", "High To Low"]}
-                paths={["Rating", "Price"]}
+                paths={["rating", "pricePerDay"]}
                 onSelectSort={this.handleSort}
+                sortValue={sortValue}
+                sortpath={sortpath}
               />
             </div>
           </div>
