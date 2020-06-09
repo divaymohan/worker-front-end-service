@@ -4,7 +4,7 @@ class FooterBar extends Component {
   state = {};
   render() {
     return (
-      <footer className="bg-dark">
+      <footer className="bg-dark jumbotron text-center mb-0 ">
         <div className="row">
           <div className="col">
             <h3>
