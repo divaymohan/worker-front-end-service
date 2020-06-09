@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import StarRatingComponent from "react-star-rating-component";
 class Worker extends Component {
   state = {
     worker: this.props.worker,
@@ -18,12 +19,14 @@ class Worker extends Component {
       skills,
       pricePerDay,
       address,
+      rating,
     } = this.props.worker;
     const { country, houseNumber, city, pin, street, area, landmark } = address;
     return (
       <div className="card m-2">
         <div className="card-header text-dark">
           <h4>{firstName}</h4>
+          <StarRatingComponent name="rate1" starCount={5} value={rating} />
           <span>
             {skills.map((s) => {
               return (

@@ -15,6 +15,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a9", work: "jhaddu vala", __v: 0 },
     ],
     pricePerDay: 500,
+    rating: 3,
     __v: 0,
     address: {
       country: "India",
@@ -42,6 +43,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a4", work: "swiper", __v: 0 },
     ],
     pricePerDay: 300,
+    rating: 2,
     __v: 0,
     address: {
       country: "India",
@@ -72,6 +74,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
     ],
     pricePerDay: 500,
+    rating: 3,
     __v: 0,
     address: {
       country: "India",
@@ -100,6 +103,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
     ],
     pricePerDay: 450,
+    rating: 3.5,
     __v: 0,
     address: {
       country: "India",
@@ -129,6 +133,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
     ],
     pricePerDay: 540,
+    rating: 4,
     __v: 0,
     address: {
       country: "India",
@@ -157,6 +162,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
     ],
     pricePerDay: 300,
+    rating: 2,
     __v: 0,
     address: {
       country: "India",
@@ -185,6 +191,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a8", work: "retailer", __v: 0 },
     ],
     pricePerDay: 456,
+    rating: 4,
     __v: 0,
     address: {
       country: "India",
@@ -213,6 +220,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
     ],
     pricePerDay: 123,
+    rating: 5,
     __v: 0,
     address: {
       country: "Bharat",
@@ -237,6 +245,7 @@ const workers = [
     password: "ishant1305",
     skills: [{ _id: "5ed4a90fc6161016cc9373a3", work: "cook", __v: 0 }],
     pricePerDay: 5200,
+    rating: 3,
     __v: 0,
     address: {
       country: "India",
@@ -261,6 +270,7 @@ const workers = [
     password: "swfxxf1305",
     skills: [{ _id: "5ed4a90fc6161016cc9373a5", work: "manager", __v: 0 }],
     pricePerDay: 345,
+    rating: 1,
     __v: 0,
     address: {
       country: "India",
@@ -288,6 +298,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a7", work: "house skipper", __v: 0 },
     ],
     pricePerDay: 3500,
+    rating: 4,
     __v: 0,
     address: {
       country: "India",
@@ -316,6 +327,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
     ],
     pricePerDay: 545,
+    rating: 3,
     __v: 0,
     address: {
       country: "India",
@@ -349,6 +361,7 @@ const workers = [
       { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
     ],
     pricePerDay: 345,
+    rating: 2,
     __v: 0,
     address: {
       country: "india",
