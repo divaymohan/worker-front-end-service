@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NavBar from "./navBar/navBar";
 import CentreBody from "./body/centreBody";
 import Filters from "./body/Filters";
-import RightBody from "./body/rightBody";
+import RightBody from "./body/rightSideBar";
 import { getWorks } from "../services/fakeWorkServices";
 import Pagination from "./common/pagination";
 import { getWorkers } from "../services/fakeWorkerService";
@@ -75,34 +75,31 @@ class MyApp extends Component {
     const worker = paginate(sorted, currentPage, pageSize);
     return (
       <React.Fragment>
-        <main className="bg-dark container" style={{ width: "100%" }}>
-          <NavBar />
-          <div className="row">
-            <div className="col-2 bg-dark m-1">
-              <Filters Works={this.state} onWorkClick={this.handleWorkClick} />
-            </div>
-            <div className="col-7 bg-dark m-1">
-              <CentreBody worker={worker} />
-              <Pagination
-                pageSize={pageSize}
-                currentPage={currentPage}
-                itemsCount={sorted.length}
-                onPageChange={this.handleClickPage}
-              />
-            </div>
-
-            <div className="col-2 bg-dark m-1">
-              <RightBody
-                items={["Low To High", "High To Low"]}
-                paths={["rating", "pricePerDay"]}
-                onSelectSort={this.handleSort}
-                sortValue={sortValue}
-                sortpath={sortpath}
-              />
-            </div>
+        <div className="row">
+          <div className="col-2 bg-dark m-1">
+            <Filters Works={this.state} onWorkClick={this.handleWorkClick} />
           </div>
-          <FooterBar />
-        </main>
+          <div className="col-7 bg-dark m-1">
+            <CentreBody worker={worker} />
+            <Pagination
+              pageSize={pageSize}
+              currentPage={currentPage}
+              itemsCount={sorted.length}
+              onPageChange={this.handleClickPage}
+            />
+          </div>
+
+          <div className="col-2 bg-dark m-1">
+            <RightBody
+              items={["Low To High", "High To Low"]}
+              paths={["rating", "pricePerDay"]}
+              onSelectSort={this.handleSort}
+              sortValue={sortValue}
+              sortpath={sortpath}
+            />
+          </div>
+        </div>
+        <FooterBar />
       </React.Fragment>
     );
   }
