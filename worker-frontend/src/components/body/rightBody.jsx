@@ -4,10 +4,10 @@ class RightBody extends Component {
   render() {
     const { items, paths, onSelectSort, sortValue, sortpath } = this.props;
     return (
-      <div className="m-1">
+      <div className="m-0">
         {paths.map((path) => (
           <h5 key={path}>
-            <span className="badge badge-pill badge-dark m-2">
+            <span className="badge badge-pill badge-dark m-1">
               Sort By {path === "pricePerDay" ? "Price" : "Rating"}
             </span>
             <SortFilter

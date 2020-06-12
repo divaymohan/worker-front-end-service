@@ -75,13 +75,13 @@ class MyApp extends Component {
     const worker = paginate(sorted, currentPage, pageSize);
     return (
       <React.Fragment>
-        <main className="container bg-dark ">
+        <main className="bg-dark container" style={{ width: "100%" }}>
           <NavBar />
           <div className="row">
-            <div className="col bg-dark m-2 fixed">
+            <div className="col-2 bg-dark m-1">
               <Filters Works={this.state} onWorkClick={this.handleWorkClick} />
             </div>
-            <div className="col-8 bg-dark m-2">
+            <div className="col-7 bg-dark m-1">
               <CentreBody worker={worker} />
               <Pagination
                 pageSize={pageSize}
@@ -91,7 +91,7 @@ class MyApp extends Component {
               />
             </div>
 
-            <div className="col bg-dark m-2">
+            <div className="col-2 bg-dark m-1">
               <RightBody
                 items={["Low To High", "High To Low"]}
                 paths={["rating", "pricePerDay"]}

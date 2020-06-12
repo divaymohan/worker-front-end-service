@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
+import { BrowserRouter } from "react-router-dom";
 import MyApp from "./components/myApp";
 class App extends Component {
-  state = {};
   render() {
     return <MyApp />;
   }
