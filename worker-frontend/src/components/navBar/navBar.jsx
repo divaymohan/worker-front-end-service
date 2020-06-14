@@ -38,6 +38,12 @@ class NavBar extends Component {
             </NavLink>
           </div>
         </div>
+        <NavLink className="nav-link " to="/login">
+          Login
+        </NavLink>
+        <NavLink className="nav-link " to="/register">
+          Register
+        </NavLink>
       </nav>
     );
   }

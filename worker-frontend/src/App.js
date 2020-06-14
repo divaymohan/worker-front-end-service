@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <main className="bg-dark container" style={{ width: "100%" }}>
+        <main className="bg-white container-fluid">
           <NavBar />
           <Switch>
             <Route path="/" exact component={MyApp} />

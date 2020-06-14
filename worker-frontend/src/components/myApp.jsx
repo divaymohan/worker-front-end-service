@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NavBar from "./navBar/navBar";
 import CentreBody from "./body/centreBody";
 import Filters from "./body/Filters";
 import RightBody from "./body/rightSideBar";
@@ -76,10 +75,10 @@ class MyApp extends Component {
     return (
       <React.Fragment>
         <div className="row">
-          <div className="col-2 bg-dark m-1">
+          <div className="col-2 bg-light m-1">
             <Filters Works={this.state} onWorkClick={this.handleWorkClick} />
           </div>
-          <div className="col-7 bg-dark m-1">
+          <div className="col-8 bg-light m-1">
             <CentreBody worker={worker} />
             <Pagination
               pageSize={pageSize}
@@ -89,7 +88,7 @@ class MyApp extends Component {
             />
           </div>
 
-          <div className="col-2 bg-dark m-1">
+          <div className="col bg-light m-1">
             <RightBody
               items={["Low To High", "High To Low"]}
               paths={["rating", "pricePerDay"]}
