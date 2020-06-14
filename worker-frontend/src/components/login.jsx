@@ -1,16 +1,30 @@
 import React, { Component } from "react";
 import FooterBar from "./footer/footer";
+import Input from "./common/input";
 
 class Login extends Component {
   state = {
     account: {
-      username: " ",
-      password: " ",
+      username: "",
+      password: "",
     },
+    errors: {},
+  };
+  validate = () => {
+    const { account } = this.state;
+    const errors = {};
+    if (account.username.trim() === "") {
+      errors.username = "username can't be empty";
+    }
+    if (account.password.trim() === "") {
+      errors.password = "password can't be empty";
+    }
+    return Object.keys(errors).length === 0 ? null : errors;
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted page..!!");
+    const errors = this.validate();
+    this.setState({ errors: errors || {} });
   };
   handleChange = (e) => {
     const account = { ...this.state.account };
@@ -18,6 +32,7 @@ class Login extends Component {
     this.setState({ account });
   };
   render() {
+    const { account, errors } = this.state;
     return (
       <React.Fragment>
         <div className="container">
@@ -27,29 +42,23 @@ class Login extends Component {
             </div>
             <div className="m-5">
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="username">Username : </label>
-                  <input
-                    type="emial"
-                    name="username"
-                    onChange={this.handleChange}
-                    className="form-control shadow-sm p-3 mb-5 bg-white rounded"
-                    id="username"
-                    value={this.state.username}
-                    autoFocus
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password : </label>
-                  <input
-                    type="pssword"
-                    name="password"
-                    onChange={this.handleChange}
-                    value={this.state.password}
-                    className="form-control shadow-sm p-3 mb-5 bg-white rounded"
-                    id="password"
-                  />
-                </div>
+                <Input
+                  type={"emial"}
+                  name={"username"}
+                  onChange={this.handleChange}
+                  id={"username"}
+                  value={account.username}
+                  error={errors.username}
+                />
+                <Input
+                  type={"password"}
+                  name={"password"}
+                  onChange={this.handleChange}
+                  id={"password"}
+                  value={account.password}
+                  error={errors.password}
+                />
+
                 <button type="submit" className="btn btn-primary ">
                   Login
                 </button>
