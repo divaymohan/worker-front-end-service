@@ -4,7 +4,7 @@ const Filters = (props) => {
   const { onWorkClick, Works } = props;
   const { works, currentSelectedWork } = Works;
   return (
-    <ul className="list-group m-2">
+    <ul className="list-group m-2 shadow-lg p-3 mb-5 bg-white rounded">
       {works.map((w) => (
         <li
           key={w._id}

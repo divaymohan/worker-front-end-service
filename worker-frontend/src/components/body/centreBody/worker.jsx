@@ -23,7 +23,7 @@ class Worker extends Component {
     } = this.props.worker;
     //const { country, houseNumber, city, pin, street, area, landmark } = address;
     return (
-      <div className="card m-2">
+      <div className="card m-2 shadow-sm p-3 mb-5 bg-white rounded">
         <div className="card-header text-dark">
           <h4>
             {firstName}

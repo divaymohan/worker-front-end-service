@@ -9,7 +9,7 @@ const Pagination = (props) => {
   if (pagesCount === 1) return null;
   return (
     <nav aria-label="Page Navigation">
-      <ul className="pagination">
+      <ul className="pagination shadow-lg p-3 mb-5 bg-white rounded">
         {pages.map((page) => (
           <li
             key={page}

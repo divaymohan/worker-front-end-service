@@ -3,7 +3,7 @@ const SortFilter = (props) => {
   const { items, path, onSelectSort, sortValue, sortpath } = props;
   console.log(sortValue);
   return (
-    <ul className="list-group mt-2 mb-4">
+    <ul className="list-group mt-2 mb-4 shadow-sm p-3 mb-5 bg-white rounded">
       {items.map((item) => (
         <li
           onClick={() => onSelectSort(path, item)}

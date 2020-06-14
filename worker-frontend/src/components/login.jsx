@@ -21,9 +21,9 @@ class Login extends Component {
     return (
       <React.Fragment>
         <div className="container">
-          <div className="card m-md-5 p-3">
+          <div className="card m-md-5 p-3 bg-light shadow-lg p-3 mb-5 bg-white rounded">
             <div className="card-title">
-              <h1>Login</h1>
+              <h2>Login</h2>
             </div>
             <div className="m-5">
               <form onSubmit={this.handleSubmit}>
@@ -33,7 +33,7 @@ class Login extends Component {
                     type="emial"
                     name="username"
                     onChange={this.handleChange}
-                    className="form-control"
+                    className="form-control shadow-sm p-3 mb-5 bg-white rounded"
                     id="username"
                     value={this.state.username}
                     autoFocus
@@ -46,18 +46,17 @@ class Login extends Component {
                     name="password"
                     onChange={this.handleChange}
                     value={this.state.password}
-                    className="form-control"
+                    className="form-control shadow-sm p-3 mb-5 bg-white rounded"
                     id="password"
                   />
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary ">
                   Login
                 </button>
               </form>
             </div>
           </div>
         </div>
-        <FooterBar />
       </React.Fragment>
     );
   }

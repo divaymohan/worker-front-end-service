@@ -8,6 +8,7 @@ import ContactUs from "./components/contactUs";
 import NotFound from "./components/notFound";
 import Login from "./components/login";
 import Register from "./components/register";
+import FooterBar from "./components/footer/footer";
 class App extends Component {
   render() {
     return (
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="*" component={NotFound} />
           </Switch>
+          <FooterBar />
         </main>
       </React.Fragment>
     );

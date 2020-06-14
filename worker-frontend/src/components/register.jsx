@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import FooterBar from "./footer/footer";
 
 class Register extends Component {
   state = {
@@ -26,9 +25,9 @@ class Register extends Component {
     return (
       <React.Fragment>
         <div className="container">
-          <div className="card m-md-5 p-3">
+          <div className="card m-md-5 p-3 bg-light shadow-lg p-3 mb-5 bg-white rounded">
             <div className="card-title">
-              <h1>Register</h1>
+              <h2>Register</h2>
             </div>
             <div className="m-5">
               <form onSubmit={this.handleSubmit}>
@@ -38,7 +37,7 @@ class Register extends Component {
                     type="text"
                     name="username"
                     onChange={this.handleChange}
-                    className="form-control"
+                    className="form-control "
                     id="username"
                     value={this.state.username}
                     autoFocus
@@ -51,7 +50,7 @@ class Register extends Component {
                     name="email"
                     onChange={this.handleChange}
                     value={this.state.email}
-                    className="form-control"
+                    className="form-control "
                     id="email"
                   />
                 </div>
@@ -62,7 +61,7 @@ class Register extends Component {
                     name="password"
                     onChange={this.handleChange}
                     value={this.state.password}
-                    className="form-control"
+                    className="form-control "
                     id="password"
                   />
                 </div>
@@ -73,7 +72,7 @@ class Register extends Component {
                     name="repeatPassword"
                     onChange={this.handleChange}
                     value={this.state.repeatPassword}
-                    className="form-control"
+                    className="form-control "
                     id="repeatPassword"
                   />
                 </div>
@@ -84,7 +83,7 @@ class Register extends Component {
                     name="country"
                     onChange={this.handleChange}
                     value={this.state.country}
-                    className="form-control"
+                    className="form-control "
                     id="country"
                   />
                 </div>
@@ -95,7 +94,7 @@ class Register extends Component {
                     name="city"
                     onChange={this.handleChange}
                     value={this.state.city}
-                    className="form-control"
+                    className="form-control "
                     id="city"
                   />
                 </div>
@@ -106,7 +105,7 @@ class Register extends Component {
                     name="pin"
                     onChange={this.handleChange}
                     value={this.state.pin}
-                    className="form-control"
+                    className="form-control "
                     id="pin"
                   />
                 </div>
@@ -118,7 +117,6 @@ class Register extends Component {
             </div>
           </div>
         </div>
-        <FooterBar />
       </React.Fragment>
     );
   }

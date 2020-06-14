@@ -6,7 +6,7 @@ import { getWorks } from "../services/fakeWorkServices";
 import Pagination from "./common/pagination";
 import { getWorkers } from "../services/fakeWorkerService";
 import { paginate } from "../utils/paginate";
-import FooterBar from "./footer/footer";
+
 import _ from "lodash";
 
 class MyApp extends Component {
@@ -78,7 +78,7 @@ class MyApp extends Component {
           <div className="col-2 bg-light m-1">
             <Filters Works={this.state} onWorkClick={this.handleWorkClick} />
           </div>
-          <div className="col-8 bg-light m-1">
+          <div className="col-7 bg-light m-1">
             <CentreBody worker={worker} />
             <Pagination
               pageSize={pageSize}
@@ -98,7 +98,6 @@ class MyApp extends Component {
             />
           </div>
         </div>
-        <FooterBar />
       </React.Fragment>
     );
   }

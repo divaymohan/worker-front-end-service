@@ -4,13 +4,13 @@ class About extends Component {
   render() {
     return (
       <div className="jumbotron m-5">
-        <h1 className="display-4">Worker Hiring System</h1>
+        <h3 className="display-4">Worker Hiring System</h3>
         <p className="lead">
           This application is to help all the lower catogory workers.
         </p>
         <hr className="my-4" />
         <div className="card-group">
-          <div class="card mb-3 m-5">
+          <div class="card mb-3 m-5 shadow-lg p-3 mb-5 bg-white rounded">
             <div class="card-header bg-dark text-white">Work</div>
             <div class="card-body bg-secondry">
               <h5 class="card-title">Find a work</h5>
@@ -23,7 +23,7 @@ class About extends Component {
               <button className="btn btn-success">join for work</button>
             </div>
           </div>
-          <div class="card mb-3 m-5">
+          <div class="card mb-3 m-5 shadow-lg p-3 mb-5 bg-white rounded">
             <div class="card-header bg-dark text-white">Hire</div>
             <div class="card-body bg-secondry text-dark">
               <h5 class="card-title">Hiring make easy.</h5>

@@ -4,7 +4,7 @@ class RightBody extends Component {
   render() {
     const { items, paths, onSelectSort, sortValue, sortpath } = this.props;
     return (
-      <div className="m-0">
+      <div className="m-0 shadow-lg p-3 mb-5 bg-white rounded">
         {paths.map((path) => (
           <h5 key={path}>
             <span className="badge badge-pill badge-dark m-1">
