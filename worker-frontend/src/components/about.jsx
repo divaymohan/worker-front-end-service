@@ -8,7 +8,7 @@ class About extends Component {
         <p className="lead">
           This application is to help all the lower catogory workers.
         </p>
-        <hr className="my-4" />
+        <hr className="my-2 " />
         <div className="card-group">
           <div class="card mb-3 m-5 shadow-lg p-3 mb-5 bg-white rounded">
             <div class="card-header bg-dark text-white">Work</div>

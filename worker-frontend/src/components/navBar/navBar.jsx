@@ -6,7 +6,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-info bg-dark">
         <Link className="navbar-brand" to="/">
           <h2>
             <span className="badge badge-light badge-pill text-primary">
