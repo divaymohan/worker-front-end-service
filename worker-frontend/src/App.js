@@ -6,6 +6,8 @@ import MyApp from "./components/myApp";
 import About from "./components/about";
 import ContactUs from "./components/contactUs";
 import NotFound from "./components/notFound";
+import Login from "./components/login";
+import Register from "./components/register";
 class App extends Component {
   render() {
     return (
@@ -16,6 +18,8 @@ class App extends Component {
             <Route path="/" exact component={MyApp} />
             <Route path="/about" component={About} />
             <Route path="/contactus" component={ContactUs} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route path="*" component={NotFound} />
           </Switch>
         </main>
