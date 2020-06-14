@@ -3,7 +3,16 @@ import React, { Component } from "react";
 class ContactUs extends Component {
   state = {};
   render() {
-    return <h1>Contact Us</h1>;
+    return (
+      <form>
+        <div className="form-group">
+          <label htmlFor=""></label>
+        </div>
+        <div className="form-group">
+          <label htmlFor=""></label>
+        </div>
+      </form>
+    );
   }
 }
 
