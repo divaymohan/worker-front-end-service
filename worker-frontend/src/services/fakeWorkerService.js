@@ -379,12 +379,11 @@ function getWorkers() {
   return workers;
 }
 function getWorkerById(id) {
-  const worker = workers.map((m) => {
-    if (m._id === id) {
-      return m;
+  for (let i = 0; i < workers.length; i++) {
+    if (workers[i]._id === id) {
+      return workers[i];
     }
-  });
-  return worker;
+  }
 }
 function deleteWorker(worker) {
   const index = workers.indexOf(worker);
