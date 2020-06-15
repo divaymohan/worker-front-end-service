@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FooterBar from "./footer/footer";
 import Input from "./common/input";
+import Joi from "joi-browser";
 
 class Login extends Component {
   state = {
@@ -10,6 +11,11 @@ class Login extends Component {
     },
     errors: {},
   };
+  schema = {
+    username: Joi.string().min(3).max(15).required().label("Username"),
+    password: Joi.string().min(3).max(20).required().label("Pssword"),
+  };
+
   validate = () => {
     const { account } = this.state;
     const errors = {};
