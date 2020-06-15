@@ -9,6 +9,7 @@ import NotFound from "./components/notFound";
 import Login from "./components/login";
 import Register from "./components/register";
 import FooterBar from "./components/footer/footer";
+import Person from "./components/body/centreBody/person";
 class App extends Component {
   render() {
     return (
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path="/contactus" component={ContactUs} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/person/:id" component={Person} />
             <Route path="*" component={NotFound} />
           </Switch>
           <FooterBar />

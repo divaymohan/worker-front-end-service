@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
+import { useHistory, Link } from "react-router-dom";
+
 class Worker extends Component {
   state = {
     worker: this.props.worker,
   };
-  handleBookEvent = () => {
-    console.log("handling book Event..!!");
+  handleBookEvent = (e) => {};
+  handleDetailsClick = (worker) => {
+    const history = useHistory();
+    let path = `/person`;
+    history.push(path);
   };
-  handleSeePageEvent = () => {
-    console.log("handling see page Details Event..!!");
-  };
+
   render() {
     const {
+      _id,
       firstName,
       userName,
       email,
@@ -59,12 +63,9 @@ class Worker extends Component {
           >
             Book
           </a>
-          <a
-            onClick={this.handleSeePageEvent}
-            className="btn btn-sm btn-secondary"
-          >
+          <Link to={`/person/${_id}`} className="btn btn-sm btn-secondary">
             Details
-          </a>
+          </Link>
         </div>
       </div>
     );

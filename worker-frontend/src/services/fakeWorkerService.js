@@ -378,6 +378,14 @@ const workers = [
 function getWorkers() {
   return workers;
 }
+function getWorkerById(id) {
+  const worker = workers.map((m) => {
+    if (m._id === id) {
+      return m;
+    }
+  });
+  return worker;
+}
 function deleteWorker(worker) {
   const index = workers.indexOf(worker);
   workers.splice(index);
@@ -385,4 +393,5 @@ function deleteWorker(worker) {
 module.exports = {
   getWorkers,
   deleteWorker,
+  getWorkerById,
 };

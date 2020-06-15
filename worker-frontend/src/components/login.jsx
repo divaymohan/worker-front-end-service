@@ -1,23 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 
 import Joi from "joi-browser";
 import Form from "./common/form";
 
 class Login extends Form {
   state = {
-    account: {
-      username: "",
-      password: "",
-    },
+    data: { username: "", password: "" },
     errors: {},
   };
+
   schema = {
-    username: Joi.string().min(3).max(15).required().label("Username"),
-    password: Joi.string().min(3).max(20).required().label("Pssword"),
+    username: Joi.string().required().min(3).label("Username"),
+    password: Joi.string().required().min(3).label("Password"),
   };
 
   doSubmit = () => {
-    console.log("Form Submitted");
+    // Call the server
+    console.log("Submitted");
   };
   render() {
     return (
