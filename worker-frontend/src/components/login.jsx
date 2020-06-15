@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import FooterBar from "./footer/footer";
-import Input from "./common/input";
-import Joi from "joi-browser";
 
-class Login extends Component {
+import Joi from "joi-browser";
+import Form from "./common/form";
+
+class Login extends Form {
   state = {
     account: {
       username: "",
@@ -16,29 +16,10 @@ class Login extends Component {
     password: Joi.string().min(3).max(20).required().label("Pssword"),
   };
 
-  validate = () => {
-    const { account } = this.state;
-    const errors = {};
-    if (account.username.trim() === "") {
-      errors.username = "username can't be empty";
-    }
-    if (account.password.trim() === "") {
-      errors.password = "password can't be empty";
-    }
-    return Object.keys(errors).length === 0 ? null : errors;
-  };
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const errors = this.validate();
-    this.setState({ errors: errors || {} });
-  };
-  handleChange = (e) => {
-    const account = { ...this.state.account };
-    account[e.currentTarget.name] = e.currentTarget.value;
-    this.setState({ account });
+  doSubmit = () => {
+    console.log("Form Submitted");
   };
   render() {
-    const { account, errors } = this.state;
     return (
       <React.Fragment>
         <div className="container">
@@ -48,26 +29,9 @@ class Login extends Component {
             </div>
             <div className="m-5">
               <form onSubmit={this.handleSubmit}>
-                <Input
-                  type={"emial"}
-                  name={"username"}
-                  onChange={this.handleChange}
-                  id={"username"}
-                  value={account.username}
-                  error={errors.username}
-                />
-                <Input
-                  type={"password"}
-                  name={"password"}
-                  onChange={this.handleChange}
-                  id={"password"}
-                  value={account.password}
-                  error={errors.password}
-                />
-
-                <button type="submit" className="btn btn-primary ">
-                  Login
-                </button>
+                {this.renderInput("username", "Username")}
+                {this.renderInput("password", "Password", "password")}
+                {this.renderButton("Login")}
               </form>
             </div>
           </div>
