@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import CentreBody from "./body/centreBody";
 import Filters from "./body/Filters";
 import RightBody from "./body/rightSideBar";
-import { getWorks } from "../services/fakeWorkServices";
 import Pagination from "./common/pagination";
 import { getWorkers } from "../services/fakeWorkerService";
 import { paginate } from "../utils/paginate";
+//import { getWorks } from "../services/fakeWorkServices";
+//import { getWorks } from "../services/work";
 
 import _ from "lodash";
+import axios from "axios";
 
 class MyApp extends Component {
   state = {
@@ -19,9 +21,12 @@ class MyApp extends Component {
     sortValue: "Low To High",
     sortpath: "firstName",
   };
-  componentDidMount() {
+  async componentDidMount() {
     const currentSelectedWork = { _id: null, work: "All Jobs" };
-    const works = [currentSelectedWork, ...getWorks()];
+    const workUrl = "http://localhost:3001/api/hiring/work/";
+    const { data } = await axios.get(workUrl, {'Content-Type',undefined});
+    console.log(data);
+    const works = [currentSelectedWork, ...data];
     const workers = getWorkers();
 
     this.setState({ works, workers, currentSelectedWork });

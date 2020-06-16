@@ -1,3 +1,11 @@
+import axios from "axios";
+async function getWorks() {
+  const fetchUrl = "localhost:3001/api/hiring/work/";
+  const works = await axios.get(fetchUrl);
+  console.log(works);
+  return works;
+}
+
 const works = [
   { _id: "5ed4a90fc6161016cc9373a3", work: "cook", __v: 0 },
   { _id: "5ed4a90fc6161016cc9373a4", work: "swiper", __v: 0 },
@@ -9,9 +17,9 @@ const works = [
   { _id: "5ed4a90fc6161016cc9373a10", work: "khet vala", __v: 0 },
 ];
 
-function getWorks() {
-  return works;
-}
+// function getWorks() {
+//   return works;
+//}
 module.exports = {
   getWorks,
 };
