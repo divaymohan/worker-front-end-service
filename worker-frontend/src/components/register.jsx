@@ -28,15 +28,16 @@ class Register extends Form {
       this.state.data.roll.trim() !== "worker" &&
       this.state.data.roll.trim() !== "customer"
     ) {
-      console.log(this.state.data.roll === "worker");
       toast.error("Roll Must be worker or customer.", {
         position: toast.POSITION.TOP_CENTER,
       });
       return;
     }
     try {
-      const user = await registerUser(this.state.data);
-      console.log("Submitted", user);
+      const { headers } = await registerUser(this.state.data);
+      localStorage.setItem("token", headers["x-auth-token"]);
+      this.props.history.push("/");
+      console.log("Submitted");
       toast.success("User Registered Now you can login..!!", {
         position: toast.POSITION.TOP_CENTER,
       });

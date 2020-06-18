@@ -26,11 +26,16 @@ class Login extends Form {
       return;
     }
     try {
-      const user = await loginUser(username, password, roll);
+      const { headers } = await loginUser(username, password, roll);
+      localStorage.setItem("token", headers["x-auth-token"]);
+      this.props.history.push("/");
+
+      toast.success("Login Successfull..");
       console.log("Submitted");
     } catch (error) {
       const errors = { ...this.state.errors };
       errors.username = error.response.data;
+      this.setState({ errors });
       toast.error(error.response.data, {
         position: toast.POSITION.TOP_CENTER,
       });
