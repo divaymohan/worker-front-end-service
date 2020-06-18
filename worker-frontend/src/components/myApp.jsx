@@ -3,10 +3,8 @@ import CentreBody from "./body/centreBody";
 import Filters from "./body/Filters";
 import RightBody from "./body/rightSideBar";
 import Pagination from "./common/pagination";
-import { getWorkers } from "../services/fakeWorkerService";
 import { paginate } from "../utils/paginate";
-//import { getWorks } from "../services/fakeWorkServices";
-//import { getWorks } from "../services/work";
+import getWorks from "../services/work";
 
 import _ from "lodash";
 import axios from "axios";
@@ -23,8 +21,8 @@ class MyApp extends Component {
   };
   async componentDidMount() {
     const currentSelectedWork = { _id: null, work: "All Jobs" };
-    const workUrl = "http://localhost:3001/api/hiring/work/";
-    const { data: workes } = await axios.get(workUrl);
+    //const workUrl = "http://localhost:3001/api/hiring/work/";
+    const { data: workes } = await getWorks();
     const workerUrl = "http://localhost:3001/api/hiring/workers/";
     const { data: workers } = await axios.get(workerUrl);
     const works = [currentSelectedWork, ...workes];

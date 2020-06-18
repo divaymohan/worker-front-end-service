@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { getWorkerById } from "../../../services/fakeWorkerService";
 import StarRatingComponent from "react-star-rating-component";
 import getWorkers from "../../../services/workerService";
 import { Link } from "react-router-dom";

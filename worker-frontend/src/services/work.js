@@ -1,9 +1,7 @@
 import axios from "axios";
-
+const fetchUrl = "http://localhost:3001/api/hiring/work/";
 async function getWorks() {
-  const fetchUrl = "localhost:3001/api/hiring/work/";
   const works = await axios.get(fetchUrl);
-  console.log(work);
   return works;
 }
 
