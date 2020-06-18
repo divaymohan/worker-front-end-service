@@ -25,9 +25,10 @@ class Register extends Form {
 
   doSubmit = async () => {
     if (
-      this.state.data.roll !== "worker" ||
-      this.state.data.roll !== "customer"
+      this.state.data.roll.trim() !== "worker" &&
+      this.state.data.roll.trim() !== "customer"
     ) {
+      console.log(this.state.data.roll === "worker");
       toast.error("Roll Must be worker or customer.", {
         position: toast.POSITION.TOP_CENTER,
       });
@@ -36,6 +37,9 @@ class Register extends Form {
     try {
       const user = await registerUser(this.state.data);
       console.log("Submitted", user);
+      toast.success("User Registered Now you can login..!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     } catch (ex) {
       toast.error(ex.response.data, { position: toast.POSITION.TOP_CENTER });
     }
