@@ -36,7 +36,7 @@ class Register extends Form {
     try {
       const { headers } = await registerUser(this.state.data);
       localStorage.setItem("token", headers["x-auth-token"]);
-      this.props.history.push("/");
+      window.location = "/";
       console.log("Submitted");
       toast.success("User Registered Now you can login..!!", {
         position: toast.POSITION.TOP_CENTER,

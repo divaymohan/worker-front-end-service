@@ -5,6 +5,8 @@ class NavBar extends Component {
   state = {};
 
   render() {
+    const { User } = this.props;
+    console.log(User);
     return (
       <nav className="navbar navbar-expand-lg navbar-info bg-dark">
         <Link className="navbar-brand" to="/">
@@ -38,12 +40,26 @@ class NavBar extends Component {
             </NavLink>
           </div>
         </div>
-        <NavLink className="nav-link " to="/login">
-          Login
-        </NavLink>
-        <NavLink className="nav-link " to="/register">
-          Register
-        </NavLink>
+        {!User && (
+          <React.Fragment>
+            <NavLink className="nav-link " to="/login">
+              Login
+            </NavLink>
+            <NavLink className="nav-link " to="/register">
+              Register
+            </NavLink>
+          </React.Fragment>
+        )}
+        {User && (
+          <React.Fragment>
+            <NavLink className="nav-link " to="/profile">
+              {User.userName}
+            </NavLink>
+            <NavLink className="nav-link " to="/logout">
+              logout
+            </NavLink>
+          </React.Fragment>
+        )}
       </nav>
     );
   }

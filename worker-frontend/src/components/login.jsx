@@ -28,7 +28,7 @@ class Login extends Form {
     try {
       const { headers } = await loginUser(username, password, roll);
       localStorage.setItem("token", headers["x-auth-token"]);
-      this.props.history.push("/");
+      window.location = "/";
 
       toast.success("Login Successfull..");
       console.log("Submitted");
