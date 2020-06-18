@@ -10,6 +10,10 @@ import Login from "./components/login";
 import Register from "./components/register";
 import FooterBar from "./components/footer/footer";
 import Person from "./components/body/centreBody/person";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 class App extends Component {
   render() {
     return (

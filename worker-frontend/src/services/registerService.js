@@ -13,7 +13,12 @@ async function registerUser(user) {
     return response;
   } else {
     const url = "http://localhost:3001/api/hiring/customers/";
-    const response = await axios.post(url, {});
+    const response = await axios.post(url, {
+      userName: user.username,
+      password: user.password,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+    });
     return response;
   }
 }

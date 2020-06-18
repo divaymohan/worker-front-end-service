@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import registerUser from "../services/registerService";
+import { toast } from "react-toastify";
 class Register extends Form {
   state = {
     data: {
@@ -23,11 +24,20 @@ class Register extends Form {
   };
 
   doSubmit = async () => {
+    if (
+      this.state.data.roll !== "worker" ||
+      this.state.data.roll !== "customer"
+    ) {
+      toast.error("Roll Must be worker or customer.", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    }
     try {
       const user = await registerUser(this.state.data);
       console.log("Submitted", user);
     } catch (ex) {
-      alert(ex.response.data);
+      toast.error(ex.response.data, { position: toast.POSITION.TOP_CENTER });
     }
   };
   render() {
