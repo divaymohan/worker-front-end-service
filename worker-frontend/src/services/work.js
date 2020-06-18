@@ -7,6 +7,4 @@ async function getWorks() {
   return works;
 }
 
-module.exports = {
-  getWorks,
-};
+export default getWorks;

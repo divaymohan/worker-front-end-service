@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getWorkerById } from "../../../services/fakeWorkerService";
 import StarRatingComponent from "react-star-rating-component";
+import getWorkers from "../../../services/workerService";
 import { Link } from "react-router-dom";
 
 class Person extends Component {
@@ -8,10 +9,9 @@ class Person extends Component {
     worker: {},
   };
   handleBookEvent = () => {};
-  componentDidMount() {
-    const worker = getWorkerById(this.props.match.params.id.trim());
-    console.log(this.props.match.params.id);
-    console.log("worker: ", worker);
+  async componentDidMount() {
+    const { data: worker } = await getWorkers(this.props.match.params.id);
+    console.log(worker);
     this.setState({ worker });
   }
   render() {
@@ -29,26 +29,13 @@ class Person extends Component {
     //const { country, houseNumber, city, pin, street, area, landmark } = address;
     return (
       <div className="card m-2 shadow-sm p-3 mb-5 bg-white rounded">
-        <div className="card-header text-dark">
+        <div className="card-header">
           <h4>
             {firstName}
-            <div className="float-right">
+            {/* <div className="float-right">
               <StarRatingComponent name="rate1" starCount={5} value={rating} />
-            </div>
+            </div> */}
           </h4>
-
-          <span>
-            {this.state.worker.skills.map((s) => {
-              return (
-                <span
-                  key={s.work}
-                  className="badge badge-pill badge-success m-1"
-                >
-                  {s.work}
-                </span>
-              );
-            })}
-          </span>
         </div>
         <div className="card-body">
           <p className="card-text m-1">

@@ -24,10 +24,11 @@ class MyApp extends Component {
   async componentDidMount() {
     const currentSelectedWork = { _id: null, work: "All Jobs" };
     const workUrl = "http://localhost:3001/api/hiring/work/";
-    const { data } = await axios.get(workUrl, {'Content-Type',undefined});
-    console.log(data);
-    const works = [currentSelectedWork, ...data];
-    const workers = getWorkers();
+    const { data: workes } = await axios.get(workUrl);
+    const workerUrl = "http://localhost:3001/api/hiring/workers/";
+    const { data: workers } = await axios.get(workerUrl);
+    const works = [currentSelectedWork, ...workes];
+    // const workers = getWorkers();
 
     this.setState({ works, workers, currentSelectedWork });
   }
