@@ -7,6 +7,8 @@ import jwtDecode from "jwt-decode";
 import {
   getCustService,
   getAddress,
+  updateCusService,
+  UpdateAddress,
 } from "./../services/customerUpdateService";
 
 class Update extends Form {
@@ -86,8 +88,19 @@ class Update extends Form {
   doSubmit = async () => {
     const jwt = localStorage.getItem("token");
     const result = jwtDecode(jwt);
-    toast.success(result._id);
     console.log(result);
+    try {
+      let cust = await updateCusService(
+        this.state._Ids.customer_id,
+        this.state.data
+      );
+      //console.log(cust);
+      cust = await UpdateAddress(this.state._Ids.customer_id, this.state.data);
+      //console.log(cust);
+      toast("Data Updated Successfully..!");
+    } catch (ex) {
+      toast(ex.response.data);
+    }
   };
   render() {
     return (
