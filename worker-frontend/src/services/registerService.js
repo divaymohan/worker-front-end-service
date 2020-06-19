@@ -9,6 +9,11 @@ async function registerUser(user) {
       password: user.password,
       email: user.email,
       phoneNumber: user.phoneNumber,
+      address: {
+        city: user.city,
+        area: user.area,
+        pin: user.pin,
+      },
     });
     return response;
   } else {
@@ -18,6 +23,11 @@ async function registerUser(user) {
       password: user.password,
       email: user.email,
       phoneNumber: user.phoneNumber,
+      address: {
+        city: user.city,
+        area: user.area,
+        pin: user.pin,
+      },
     });
     return response;
   }

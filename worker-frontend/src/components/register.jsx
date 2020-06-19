@@ -10,6 +10,9 @@ class Register extends Form {
       password: "",
       email: "",
       phoneNumber: 1111111111,
+      city: "",
+      area: "",
+      pin: 0,
       roll: "worker",
     },
     errors: {},
@@ -20,6 +23,9 @@ class Register extends Form {
     email: Joi.string().required(),
     phoneNumber: Joi.number().min(1111111111).max(9999999999).required(),
     password: Joi.string().required().min(3).label("Password"),
+    city: Joi.string().required().min(3).label("City"),
+    pin: Joi.number().required().min(111111).label("Pin"),
+    area: Joi.string().required().min(3).label("Area"),
     roll: Joi.string().required(),
   };
 
@@ -59,6 +65,9 @@ class Register extends Form {
                 {this.renderInput("email", "Email")}
                 {this.renderInput("phoneNumber", "Phone Number")}
                 {this.renderInput("password", "Password", "password")}
+                {this.renderInput("city", "City")}
+                {this.renderInput("area", "Area")}
+                {this.renderInput("pin", "Pin")}
                 {this.renderInput("roll", "Roll")}
                 {this.renderButton("Register")}
               </form>

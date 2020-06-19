@@ -4,27 +4,63 @@ import Form from "./common/form";
 import loginUser from "./../services/auth";
 import { toast } from "react-toastify";
 import jwtDecode from "jwt-decode";
+import {
+  getCustService,
+  getAddress,
+} from "./../services/customerUpdateService";
 
 class Update extends Form {
   state = {
     data: {
-      firstName: "Divay",
-      lastName: "mohan",
-      middleName: "simple",
-      userName: "krjjds ",
-      email: "dscsd@nf.com ",
+      firstName: "",
+      lastName: "",
+      middleName: "",
+      userName: "",
+      email: "",
       phoneNumber: 2545455252,
-      password: "sadvd",
-      houseNumber: 123,
-      street: "csdc",
-      country: "ccsc",
-      landmark: "sccsc",
-      city: "ccsc",
-      area: "csdc",
-      pin: 135264,
+      password: "",
+      houseNumber: 0,
+      street: "",
+      country: "",
+      landmark: "",
+      city: "",
+      area: "",
+      pin: 0,
+    },
+    _Ids: {
+      address_id: "",
+      customer_id: "",
     },
     errors: {},
   };
+  async componentDidMount() {
+    const jwt = localStorage.getItem("token");
+    const result = jwtDecode(jwt);
+    const { data: customer } = await getCustService(result._id);
+    const { data: address } = await getAddress(customer.address._id);
+    const data = { ...this.state.data };
+    data.firstName = customer.firstName;
+    data.lastName = customer.lastName;
+    data.email = customer.email;
+    data.userName = customer.userName;
+    data.password = customer.password;
+    data.middleName = customer.middleName;
+    data.phoneNumber = customer.phoneNumber;
+
+    data.city = address.city;
+    data.area = address.area;
+    data.country = address.country;
+    data.houseNumber = address.houseNumber;
+    data.pin = address.pin;
+    data.landmark = address.landmark;
+    data.street = address.street;
+
+    const _Ids = { ...this.state._Ids };
+    _Ids.address_id = address._id;
+    _Ids.customer_id = customer._id;
+
+    this.setState({ data, _Ids });
+  }
 
   schema = {
     userName: Joi.string().required().min(3).label("Username"),
