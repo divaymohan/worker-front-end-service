@@ -3,25 +3,25 @@ import Joi from "joi-browser";
 import Form from "./common/form";
 import loginUser from "./../services/auth";
 import { toast } from "react-toastify";
+import jwtDecode from "jwt-decode";
 
 class Update extends Form {
   state = {
     data: {
       firstName: "Divay",
-      lastName: "",
-      middleName: "",
-      userName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      houseNumber: "hwy",
-      street: "",
-      country: "",
-      landmark: "",
-      city: "",
-      area: "",
-      pin: "",
-      isSpecial: "",
+      lastName: "mohan",
+      middleName: "simple",
+      userName: "krjjds ",
+      email: "dscsd@nf.com ",
+      phoneNumber: 2545455252,
+      password: "sadvd",
+      houseNumber: 123,
+      street: "csdc",
+      country: "ccsc",
+      landmark: "sccsc",
+      city: "ccsc",
+      area: "csdc",
+      pin: 135264,
     },
     errors: {},
   };
@@ -43,13 +43,15 @@ class Update extends Form {
     landmark: Joi.string().min(3).max(1000),
     city: Joi.string().min(3).max(1000),
     area: Joi.string().min(3).max(1000),
-    pin: Joi.number().min(111111).max(999999),
+    pin: Joi.number().min(111111),
     password: Joi.string().required().min(3).label("Password"),
-    isSpecial: Joi.string(),
   };
 
   doSubmit = async () => {
-    //call server
+    const jwt = localStorage.getItem("token");
+    const result = jwtDecode(jwt);
+    toast.success(result._id);
+    console.log(result);
   };
   render() {
     return (
@@ -72,8 +74,8 @@ class Update extends Form {
                 {this.renderInput("country", "Country*")}
                 {this.renderInput("landmark", "Landmark*")}
                 {this.renderInput("area", "Area")}
-                {this.renderInput("Pin", "Pin*")}
-                {this.renderInput("username", "Username")}
+                {this.renderInput("pin", "Pin*")}
+                {this.renderInput("userName", "Username")}
                 {this.renderInput("password", "Password", "password")}
                 {this.renderButton("Update")}
               </form>

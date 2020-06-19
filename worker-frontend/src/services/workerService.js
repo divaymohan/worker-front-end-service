@@ -7,6 +7,4 @@ async function getWorkers(id) {
   return workers;
 }
 
-async function postUser() {}
-
 export default getWorkers;
