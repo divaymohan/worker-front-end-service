@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jwtDecode from "jwt-decode";
 import Logout from "./components/common/logout";
+import Profile from "./components/profile";
 toast.configure();
 class App extends Component {
   state = { user: "" };
@@ -36,6 +37,7 @@ class App extends Component {
             <Route path="/contactus" component={ContactUs} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
+            <Route path="/profile" component={Profile} />
             <Route path="/register" component={Register} />
             <Route path="/person/:id" component={Person} />
             <Route path="*" component={NotFound} />
