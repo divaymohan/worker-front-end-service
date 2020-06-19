@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import Update from "./editCustomer";
+import jwtDecode from "jwt-decode";
+import UpdateWorker from "./editWorker";
 
 class Profile extends Component {
   state = {
     classes: ["Profile", "Edit", "History"],
     Value: "",
+    roll: " ",
   };
   onSelectSort = (item) => {
+    let { roll } = jwtDecode(localStorage.getItem("token"));
+    console.log(roll);
     let { Value } = this.state;
     Value = item;
-    this.setState({ Value });
+    this.setState({ Value, roll });
   };
   render() {
     return (
@@ -37,7 +42,14 @@ class Profile extends Component {
               </ul>
             </div>
           </div>
-          <div className="col">{this.state.Value === "Edit" && <Update />}</div>
+          <div className="col">
+            {this.state.Value === "Edit" && this.state.roll === "customer" && (
+              <Update />
+            )}
+            {this.state.Value === "Edit" && this.state.roll === "worker" && (
+              <UpdateWorker />
+            )}
+          </div>
         </div>
       </div>
     );

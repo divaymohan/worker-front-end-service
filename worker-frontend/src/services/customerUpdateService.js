@@ -1,5 +1,4 @@
 import axios from "axios";
-import Update from "./../components/editCustomer";
 
 async function getCustService(customer_Id) {
   const custUrl = "http://localhost:3001/api/hiring/customers/";
