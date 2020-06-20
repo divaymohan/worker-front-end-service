@@ -11,10 +11,16 @@ class Worker extends Component {
   };
   handleBookEvent = async (_id) => {
     const jwt = localStorage.getItem("token");
+    if (!jwt) {
+      toast.error("You are Not Login..!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    }
     const { _id: C_id } = jwtDecode(jwt);
     try {
       const job = await postJob(_id, C_id);
-      toast("job posted successfully..!!");
+      toast.success("job posted successfully..!!");
     } catch (ex) {
       toast.error(ex.response.data);
     }
