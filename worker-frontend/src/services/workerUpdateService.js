@@ -21,6 +21,7 @@ async function updateWorkerService(_id, data) {
     password: data.password,
     middleName: data.middleName,
     phoneNumber: data.phoneNumber,
+    pricePerDay: data.pricePerDay,
     address: {
       city: data.city,
       area: data.area,

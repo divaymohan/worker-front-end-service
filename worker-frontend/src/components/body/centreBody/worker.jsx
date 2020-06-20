@@ -1,12 +1,24 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import { useHistory, Link } from "react-router-dom";
+import { postJob } from "../../../services/job";
+import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
 
 class Worker extends Component {
   state = {
     worker: this.props.worker,
   };
-  handleBookEvent = (e) => {};
+  handleBookEvent = async (_id) => {
+    const jwt = localStorage.getItem("token");
+    const { _id: C_id } = jwtDecode(jwt);
+    try {
+      const job = await postJob(_id, C_id);
+      toast("job posted successfully..!!");
+    } catch (ex) {
+      toast.error(ex.response.data);
+    }
+  };
   handleDetailsClick = (worker) => {
     const history = useHistory();
     let path = `/person`;
@@ -58,7 +70,7 @@ class Worker extends Component {
             Price : {pricePerDay}
           </p>
           <a
-            onClick={this.handleBookEvent}
+            onClick={() => this.handleBookEvent(_id)}
             className="btn btn-primary btn-sm m-1"
           >
             Book
