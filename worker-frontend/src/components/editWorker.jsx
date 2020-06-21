@@ -10,6 +10,7 @@ import {
   updateWorkerService,
   UpdateAddress,
 } from "./../services/workerUpdateService";
+import getWorks from "../services/work";
 
 class UpdateWorker extends Form {
   state = {
@@ -34,6 +35,7 @@ class UpdateWorker extends Form {
       address_id: "",
       worker_id: "",
     },
+    skills: [],
     errors: {},
   };
   async componentDidMount() {
@@ -62,7 +64,9 @@ class UpdateWorker extends Form {
     _Ids.address_id = address._id;
     _Ids.worker_id = worker._id;
 
-    this.setState({ data, _Ids });
+    const { data: skills } = await getWorks();
+
+    this.setState({ data, _Ids, skills });
   }
 
   schema = {
@@ -85,6 +89,9 @@ class UpdateWorker extends Form {
     pin: Joi.number().min(111111),
     pricePerDay: Joi.number().min(0),
     password: Joi.string().required().min(3).label("Password"),
+  };
+  handleSkills = async (e) => {
+    e.preventDefault();
   };
 
   doSubmit = async () => {
@@ -113,6 +120,25 @@ class UpdateWorker extends Form {
               <h2>Update</h2>
             </div>
             <div className="m-5">
+              <form onSubmit={this.handleSkills}>
+                <label htmlFor="skill" className="label">
+                  Choose Skills:
+                </label>
+                <select
+                  id="skill"
+                  name="skills"
+                  className="m-2 btn btn-secondary"
+                >
+                  {this.state.skills.map((s) => (
+                    <option value={s.work}>{s.work}</option>
+                  ))}
+                </select>
+                <input
+                  type="submit"
+                  className="btn btn-sm btn-primary m-2"
+                ></input>
+              </form>
+
               <form onSubmit={this.handleSubmit}>
                 {this.renderInput("firstName", "Fist Name*")}
                 {this.renderInput("lastName", "Last Name*")}
