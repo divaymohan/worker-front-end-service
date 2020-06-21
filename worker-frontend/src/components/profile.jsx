@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Update from "./editCustomer";
 import jwtDecode from "jwt-decode";
 import UpdateWorker from "./editWorker";
+import HistoryComponent from "./history";
 
 class Profile extends Component {
   state = {
@@ -49,6 +50,7 @@ class Profile extends Component {
             {this.state.Value === "Edit" && this.state.roll === "worker" && (
               <UpdateWorker />
             )}
+            {this.state.Value === "History" && <HistoryComponent />}
           </div>
         </div>
       </div>

@@ -10,7 +10,9 @@ async function postJob(W_Id, C_Id) {
 }
 async function history(roll, _id) {
   const urlHistory = "http://localhost:3001/api/hiring/history/";
-  const result = await axios.post(`${urlHistory}${roll}`);
+  const result = await axios.post(`${urlHistory}${roll}`, {
+    _id: _id,
+  });
   return result;
 }
 export { postJob, history };
