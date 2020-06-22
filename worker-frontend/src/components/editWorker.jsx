@@ -11,6 +11,7 @@ import {
   UpdateAddress,
 } from "./../services/workerUpdateService";
 import getWorks from "../services/work";
+import { addSkills } from "../services/skills";
 
 class UpdateWorker extends Form {
   state = {
@@ -36,6 +37,7 @@ class UpdateWorker extends Form {
       worker_id: "",
     },
     skills: [],
+    option: "",
     errors: {},
   };
   async componentDidMount() {
@@ -90,8 +92,20 @@ class UpdateWorker extends Form {
     pricePerDay: Joi.number().min(0),
     password: Joi.string().required().min(3).label("Password"),
   };
-  handleSkills = async (e) => {
-    e.preventDefault();
+
+  handleChangeSkills = (event) => {
+    this.setState({ option: event.target.value });
+  };
+  handleSubmitSkills = async (event) => {
+    const jwt = localStorage.getItem("token");
+    const { _id } = jwtDecode(jwt);
+    event.preventDefault();
+    try {
+      await addSkills(_id, this.state.option);
+      toast("added success fully..!!");
+    } catch (error) {
+      toast(error.response.data);
+    }
   };
 
   doSubmit = async () => {
@@ -120,7 +134,7 @@ class UpdateWorker extends Form {
               <h2>Update</h2>
             </div>
             <div className="m-5">
-              <form onSubmit={this.handleSkills}>
+              <form onSubmit={this.handleSubmitSkills}>
                 <label htmlFor="skill" className="label">
                   Choose Skills:
                 </label>
@@ -128,9 +142,11 @@ class UpdateWorker extends Form {
                   id="skill"
                   name="skills"
                   className="m-2 btn btn-secondary"
+                  value={this.state.option}
+                  onChange={this.handleChangeSkills}
                 >
                   {this.state.skills.map((s) => (
-                    <option value={s.work}>{s.work}</option>
+                    <option value={s._id}>{s.work}</option>
                   ))}
                 </select>
                 <input

@@ -1,11 +1,12 @@
 import axios from "axios";
 import Worker from "./../components/body/centreBody/worker";
 
-async function getSkills() {
-  const url = "";
-  const skills = await axios.get(url);
-  return skills;
+async function addSkills(_id, skill_id) {
+  const url = "http://localhost:3001/api/hiring/workers/add/skill/";
+  const result = await axios.put(`${url}${_id}`, {
+    skills: [skill_id],
+  });
+  return result;
 }
-async function addSkills(_id, skill) {}
 
-export { getSkills, addSkills };
+export { addSkills };
