@@ -50,7 +50,7 @@ class Worker extends Component {
           <h4>
             {firstName}
             <div className="float-right">
-              <StarRatingComponent name="rate1" starCount={5} value={4} />
+              <StarRatingComponent name="rate1" starCount={5} value={rating} />
             </div>
           </h4>
 

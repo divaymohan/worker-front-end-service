@@ -9,6 +9,12 @@ class HistoryComponent extends Component {
   state = {
     his: [],
     roll: "worker",
+    rating: 0,
+  };
+  onStarClick = (nextValue, preValue, name) => {
+    const rating = nextValue;
+    console.log(rating);
+    this.setState({ rating });
   };
   async componentDidMount() {
     const jwt = localStorage.getItem("token");
@@ -43,28 +49,30 @@ class HistoryComponent extends Component {
                 <td>{h.customer.userName}</td>
                 <td>{h.dateStart}</td>
                 {this.state.roll === "worker" && (
-                  <div>
-                    <td>
-                      <button className="btn btn-success btn-sm">Accept</button>
-                    </td>
-                    <td>
-                      <button className="btn btn-danger btn-sm">Reject</button>
-                    </td>
-                  </div>
+                  <td>
+                    <button className="btn btn-success btn-sm">Accept</button>
+                  </td>
+                )}
+                {this.state.roll === "worker" && (
+                  <td>
+                    <button className="btn btn-danger btn-sm">Reject</button>
+                  </td>
+                )}
+
+                {this.state.roll === "customer" && (
+                  <td>
+                    <StarRatingComponent
+                      name="rate1"
+                      starCount={5}
+                      value={this.state.rating}
+                      onStarClick={this.onStarClick}
+                    />
+                  </td>
                 )}
                 {this.state.roll === "customer" && (
-                  <div>
-                    <td>
-                      <StarRatingComponent
-                        name="rate1"
-                        starCount={5}
-                        value={0}
-                      />
-                    </td>
-                    <td>
-                      <button className="btn btn-danger btn-sm">cancle</button>
-                    </td>
-                  </div>
+                  <td>
+                    <button className="btn btn-danger btn-sm">cancle</button>
+                  </td>
                 )}
               </tr>
             ))}
