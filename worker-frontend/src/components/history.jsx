@@ -4,17 +4,24 @@ import { history } from "../services/job";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import StarRatingComponent from "react-star-rating-component";
+import { updateJobRating } from "../services/rating";
+import { rest } from "lodash";
 
 class HistoryComponent extends Component {
   state = {
     his: [],
     roll: "worker",
-    rating: 0,
   };
-  onStarClick = (nextValue, preValue, name) => {
+  onStarClick = async (nextValue, preValue, name) => {
     const rating = nextValue;
     console.log(rating);
-    this.setState({ rating });
+
+    try {
+      const { data } = await updateJobRating(_id, rating);
+      toast("rating added successfully..!!");
+    } catch (ex) {
+      toast.error(ex.response.data);
+    }
   };
   async componentDidMount() {
     const jwt = localStorage.getItem("token");
@@ -44,7 +51,7 @@ class HistoryComponent extends Component {
           </thead>
           <tbody>
             {this.state.his.map((h) => (
-              <tr>
+              <tr key={h._id}>
                 <td>{h.worker.userName}</td>
                 <td>{h.customer.userName}</td>
                 <td>{h.dateStart}</td>
@@ -64,7 +71,7 @@ class HistoryComponent extends Component {
                     <StarRatingComponent
                       name="rate1"
                       starCount={5}
-                      value={this.state.rating}
+                      value={h.jobRating}
                       onStarClick={this.onStarClick}
                     />
                   </td>
