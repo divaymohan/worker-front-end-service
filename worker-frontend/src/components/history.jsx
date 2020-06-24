@@ -42,25 +42,43 @@ class HistoryComponent extends Component {
                 <td>{h.worker.userName}</td>
                 <td>{h.customer.userName}</td>
                 <td>{h.dateStart}</td>
-                {this.state.roll === "worker" && (
+                {this.state.roll === "worker" && h.isCancled === false && (
                   <td>
                     <button className="btn btn-success btn-sm">Accept</button>
                   </td>
                 )}
-                {this.state.roll === "worker" && (
+                {this.state.roll === "worker" && h.isCancled === false && (
                   <td>
                     <button className="btn btn-danger btn-sm">Reject</button>
                   </td>
                 )}
+                {this.state.roll === "worker" && h.isCancled && (
+                  <td>
+                    <h3>
+                      <span className="badge badge-pill badge-warning">
+                        cancled
+                      </span>
+                    </h3>
+                  </td>
+                )}
 
-                {this.state.roll === "customer" && (
+                {this.state.roll === "customer" && h.isCancled === false && (
                   <td>
                     <Rating job={h} />
                   </td>
                 )}
-                {this.state.roll === "customer" && (
+                {this.state.roll === "customer" && h.isCancled === false && (
                   <td>
                     <button className="btn btn-danger btn-sm">cancle</button>
+                  </td>
+                )}
+                {this.state.roll === "customer" && h.isCancled && (
+                  <td>
+                    <h3>
+                      <span className="badge badge-pill badge-warning">
+                        cancled
+                      </span>
+                    </h3>
                   </td>
                 )}
               </tr>
