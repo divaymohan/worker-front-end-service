@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 import Rating from "./common/ratingComponent";
 import { cancleJob } from "../services/jobCancle";
 import { toast } from "react-toastify";
+import { acceptJob } from "../services/jonAccept";
 
 class HistoryComponent extends Component {
   state = {
@@ -40,7 +41,16 @@ class HistoryComponent extends Component {
     try {
       const result = await cancleJob(_id);
 
-      //toast.success("Cancled SuccessFully");
+      toast.success("Cancled SuccessFully");
+    } catch (ex) {
+      toast.warning(ex.response.data);
+    }
+  };
+  handleAccept = async (_id) => {
+    try {
+      const result = await acceptJob(_id);
+
+      toast.success("Accepted SuccessFully");
     } catch (ex) {
       toast.warning(ex.response.data);
     }
@@ -57,6 +67,7 @@ class HistoryComponent extends Component {
               <th scope="col">Date</th>
               <th scope="col"></th>
               <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -65,11 +76,27 @@ class HistoryComponent extends Component {
                 <td>{h.worker.userName}</td>
                 <td>{h.customer.userName}</td>
                 <td>{h.dateStart}</td>
-                {this.state.roll === "worker" && h.isCancled === false && (
-                  <td>
-                    <button className="btn btn-success btn-sm">Accept</button>
-                  </td>
-                )}
+                {this.state.roll === "worker" &&
+                  h.isCancled === false &&
+                  h.isAccepted && (
+                    <h4>
+                      <span className="badge badge-pill badge-success">
+                        Accepted
+                      </span>
+                    </h4>
+                  )}
+                {this.state.roll === "worker" &&
+                  h.isCancled === false &&
+                  h.isAccepted === false && (
+                    <td>
+                      <button
+                        onClick={() => this.handleAccept(h._id)}
+                        className="btn btn-success btn-sm"
+                      >
+                        Accept
+                      </button>
+                    </td>
+                  )}
                 {this.state.roll === "worker" && h.isCancled === false && (
                   <td>
                     <button
@@ -82,11 +109,11 @@ class HistoryComponent extends Component {
                 )}
                 {this.state.roll === "worker" && h.isCancled && (
                   <td>
-                    <h3>
+                    <h4>
                       <span className="badge badge-pill badge-warning">
                         cancled
                       </span>
-                    </h3>
+                    </h4>
                   </td>
                 )}
 
@@ -105,13 +132,22 @@ class HistoryComponent extends Component {
                     </button>
                   </td>
                 )}
+                {this.state.roll === "customer" &&
+                  h.isCancled === false &&
+                  h.isAccepted && (
+                    <h4>
+                      <span className="badge badge-pill badge-success">
+                        Accepted
+                      </span>
+                    </h4>
+                  )}
                 {this.state.roll === "customer" && h.isCancled && (
                   <td>
-                    <h3>
+                    <h4>
                       <span className="badge badge-pill badge-warning">
                         cancled
                       </span>
-                    </h3>
+                    </h4>
                   </td>
                 )}
               </tr>
