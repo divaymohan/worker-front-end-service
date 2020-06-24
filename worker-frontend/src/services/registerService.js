@@ -14,6 +14,7 @@ async function registerUser(user) {
         area: user.area,
         pin: user.pin,
       },
+      rating: 1,
     });
     return response;
   } else {
