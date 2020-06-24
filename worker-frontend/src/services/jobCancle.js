@@ -7,3 +7,4 @@ async function cancleJob(_id) {
   });
   return result;
 }
+export { cancleJob };

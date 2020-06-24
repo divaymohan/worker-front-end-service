@@ -3,6 +3,8 @@ import { history } from "../services/job";
 import jwtDecode from "jwt-decode";
 
 import Rating from "./common/ratingComponent";
+import { cancleJob } from "../services/jobCancle";
+import { toast } from "react-toastify";
 
 class HistoryComponent extends Component {
   state = {
@@ -14,14 +16,35 @@ class HistoryComponent extends Component {
     const jwt = localStorage.getItem("token");
     const { _id, roll } = jwtDecode(jwt);
     let his = [...this.state.his];
+
     try {
       const { data: his } = await history(roll, _id);
-
       this.setState({ his, roll });
     } catch (ex) {
       console.log(ex);
     }
   }
+  async componentDidUpdate() {
+    const jwt = localStorage.getItem("token");
+    const { _id, roll } = jwtDecode(jwt);
+    let his = [...this.state.his];
+
+    try {
+      const { data: his } = await history(roll, _id);
+      this.setState({ his, roll });
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+  cancleJobHistory = async (_id) => {
+    try {
+      const result = await cancleJob(_id);
+
+      //toast.success("Cancled SuccessFully");
+    } catch (ex) {
+      toast.warning(ex.response.data);
+    }
+  };
   render() {
     return (
       <div className="container">
@@ -49,7 +72,12 @@ class HistoryComponent extends Component {
                 )}
                 {this.state.roll === "worker" && h.isCancled === false && (
                   <td>
-                    <button className="btn btn-danger btn-sm">Reject</button>
+                    <button
+                      onClick={() => this.cancleJobHistory(h._id)}
+                      className="btn btn-danger btn-sm"
+                    >
+                      Reject
+                    </button>
                   </td>
                 )}
                 {this.state.roll === "worker" && h.isCancled && (
@@ -69,7 +97,12 @@ class HistoryComponent extends Component {
                 )}
                 {this.state.roll === "customer" && h.isCancled === false && (
                   <td>
-                    <button className="btn btn-danger btn-sm">cancle</button>
+                    <button
+                      onClick={() => this.cancleJobHistory(h._id)}
+                      className="btn btn-danger btn-sm"
+                    >
+                      cancle
+                    </button>
                   </td>
                 )}
                 {this.state.roll === "customer" && h.isCancled && (
